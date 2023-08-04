@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GettingDeeperJpaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GettingDeeperJpaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GettingDeeperJpaApplication.class, args);
+    }
 
 }
