@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -25,4 +27,14 @@ public class Student {
     private String lastName;
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private ContactInfo contactInfo;
+
+    @ManyToMany
+    @JoinTable(name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Course> courses = new HashSet<>();
 }

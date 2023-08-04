@@ -14,7 +14,7 @@ import lombok.ToString;
 @Table(name = "contact_info")
 public class ContactInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "student_id")
     private Long Id;
     @Column(name = "email", nullable = false)
     private String email;
@@ -28,5 +28,11 @@ public class ContactInfo {
     private String state;
     @Column(name = "zip_code", nullable = false)
     private String zipCode;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @MapsId
+    @JoinColumn(name = "student_id")
+    private Student student;
+
 
 }
